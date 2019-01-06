@@ -10,13 +10,13 @@ In the workshop, we will cover following points:
  - Build GraphQL server using Apollo-Server.
  - Build React GraphQL client using Apollo-Client and build react component to consume the GraphQL APIs.
 
-Requirements: 
+#### Requirements: 
   - Laptop should have node (>=6) and npm (>=4) / or yarn.
   - Postgres installed (http://postgresguide.com/setup/install.html).
   - Basics of Javascript
   - Understandings of React is useful
   
-Outline: 
+####  Outline: 
   - Introduction to GraphQL 
      - GraphQL History
   - Shortcomings of REST
