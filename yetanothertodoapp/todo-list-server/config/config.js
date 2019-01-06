@@ -1,3 +1,4 @@
+// Change the username and password to match user on your system with access to PostgreSQL
 module.exports = {
   development: {
     username: 'postgres',

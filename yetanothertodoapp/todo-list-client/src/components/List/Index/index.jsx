@@ -4,14 +4,10 @@ import { Query } from 'react-apollo';
 import { NavLink } from 'react-router-dom';
 
 import './index.css';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
 
 import { FETCH_ALL_LIST_ITEMS } from '../queries';
 
-class ListIndex1 extends Component {
+class ListIndex extends Component {
   renderListItems = (allTodoListItems) =>
     allTodoListItems.map((listItem) => {
       return(
@@ -44,4 +40,4 @@ class ListIndex1 extends Component {
   }
 }
 
-export default ListIndex1;
+export default ListIndex;
