@@ -1,20 +1,44 @@
-import React from 'react';
-import { Form, Field } from 'react-final-form';
+import React, { Component } from 'react';
 
-const ListForm = (props) => (
-  <Form
-    onSubmit={props.onSubmit}
-    render={({ handleSubmit, pristine, invalid })=> (
-      <form onSubmit={handleSubmit}>
-        <Field name="name" component="input" placeholder="List Name" />
+class ListForm extends Component {
+  state = { name: this.props.name };
 
-        <button type="submit" disabled={pristine || invalid}>
-          Submit
-        </button>
-      </form>
-    )}
-  >
-  </Form>
-)
+  handleChange = (event) => {
+    const { name, value } = event.target;
+    this.setState({ [name]: value });
+  }
+
+  handleFormSubmit = (event) => {
+    event.preventDefault();
+
+    this.props.handleSubmit(this.state)
+  }
+
+  render() {
+    return(
+      <div className="container">
+        <h2>Add New Todo List</h2>
+        <form className="form-horizontal" onSubmit={this.handleFormSubmit}>
+          <div className="form-group clearfix">
+            <label className="control-label col-sm-2">Todo List Name:</label>
+            <div className="col-sm-10">
+              <input name="name"
+                placeholder="Todo List Name"
+                onChange={this.handleChange}
+                className="form-control"
+              />
+            </div>
+          </div>
+
+          <div className="form-group clearfix">
+            <div className="col-sm-offset-2 col-sm-10">
+              <button type="submit" className="btn btn-primary">Create New Todo List</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    )
+  }
+}
 
 export default ListForm;

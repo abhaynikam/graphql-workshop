@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
 import ApolloClient from 'apollo-boost';
 import './index.css';
+import 'bootstrap/dist/css/bootstrap.css';
 
 import Routes from './routes';
 
