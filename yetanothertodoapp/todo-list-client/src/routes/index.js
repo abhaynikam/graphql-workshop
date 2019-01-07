@@ -3,6 +3,7 @@ import { ApolloProvider } from 'react-apollo';
 
 import Home from '../components/Home';
 import NewList from '../components/List/New';
+import EditList from '../components/List/Edit';
 import ListIndex from '../components/List/Index';
 import Task from '../components/Task/Show';
 import {
@@ -18,6 +19,7 @@ export default (props) => (
       <Switch>
         <Route path='/' component={Home} exact />
         <Route path='/lists/new' component={NewList} exact />
+        <Route path='/lists/:id/edit' component={EditList} exact />
         <Route path='/lists' component={ListIndex} exact />
         <Route path='/lists/:id/tasks' component={Task} exact />
       </Switch>

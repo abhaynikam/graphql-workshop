@@ -24,13 +24,14 @@ class ListForm extends Component {
               placeholder="Todo List Name"
               onChange={this.handleChange}
               className="form-control"
+              value={this.state.name}
             />
           </div>
         </div>
 
         <div className="form-group clearfix">
           <div className="col-sm-offset-2 col-sm-10">
-            <button type="submit" className="btn btn-primary">Create New Todo List</button>
+            <button type="submit" className="btn btn-primary">Submit</button>
           </div>
         </div>
       </form>

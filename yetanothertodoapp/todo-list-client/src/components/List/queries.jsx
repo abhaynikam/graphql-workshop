@@ -9,4 +9,13 @@ const FETCH_ALL_LIST_ITEMS = gql`
   }
 `;
 
-export { FETCH_ALL_LIST_ITEMS };
+const FETCH_TODO_LIST_ITEM = gql`
+  query FetchTodoListItem($id: ID!) {
+    todoList: getTodoList(id: $id) {
+      id
+      name
+    }
+  }
+`;
+
+export { FETCH_ALL_LIST_ITEMS, FETCH_TODO_LIST_ITEM };

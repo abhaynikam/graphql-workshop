@@ -3,11 +3,11 @@ import { Mutation } from 'react-apollo';
 import { withRouter, NavLink } from 'react-router-dom';
 
 import ListForm from '../form';
-import { CREATE_NEW_LIST } from '../mutations';
+import { CREATE_NEW_TODO_LIST } from '../mutations';
 
 const NewList = (props) => {
   return(
-    <Mutation mutation={CREATE_NEW_LIST}>
+    <Mutation mutation={CREATE_NEW_TODO_LIST}>
       {(createNewList) => {
         const onSubmit = values => {
           createNewList({ variables: values }).then(() => {
@@ -25,10 +25,9 @@ const NewList = (props) => {
               <div className="col-sm-12">
                 <NavLink to='/lists'>Back to All Todo Lists</NavLink>
               </div>
-
             </div>
-            <ListForm handleSubmit={onSubmit} name='' />
 
+            <ListForm handleSubmit={onSubmit} name='' />
           </div>
         );
       }}

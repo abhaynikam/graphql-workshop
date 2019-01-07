@@ -3,8 +3,10 @@ import models from '../../models';
 export default {
   Query: {
     getAllTodoLists: () => models.List.all(),
+    getTodoList: (_, { id }, _ctx) => models.List.findByPk(id),
   },
   Mutation: {
-    createNewList: (_, args, _ctx) => models.List.create(args),
+    createNewTodoList: (_, args, _ctx) => models.List.create(args),
+    updateTodoList: (_, { id, name }, _ctx) => models.List.findByPk(id).then(list => list.update({ name })),
   },
 };
