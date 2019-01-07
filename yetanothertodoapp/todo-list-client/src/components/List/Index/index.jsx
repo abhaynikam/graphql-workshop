@@ -9,7 +9,13 @@ class ListIndex extends Component {
     allTodoListItems.map((listItem) => {
       return(
         <NavLink to={`/lists/${listItem.id}/tasks`}>
-          <li key={listItem.id}>{listItem.name}</li>
+          <li key={listItem.id}>
+            {listItem.name}
+            <NavLink to={`/lists/${listItem.id}/edit`}>
+              <span className='edit'>Edit</span>
+              </NavLink>
+            <span className='close'>x</span>
+          </li>
         </NavLink>
       );
     });

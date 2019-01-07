@@ -34,7 +34,6 @@ ul li {
   cursor: pointer;
   position: relative;
   padding: 12px 8px 12px 40px;
-  list-style-type: none;
   background: #eee;
   font-size: 18px;
   transition: 0.2s;
@@ -86,6 +85,18 @@ ul li.checked::before {
 }
 
 .close:hover {
+  background-color: #f44336;
+  color: white;
+}
+
+.edit {
+  position: absolute;
+  right: 32px;
+  top: 0;
+  padding: 12px 16px 12px 16px;
+}
+
+.edit:hover {
   background-color: #f44336;
   color: white;
 }
