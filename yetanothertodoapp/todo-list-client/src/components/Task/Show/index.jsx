@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Query } from 'react-apollo';
 import { withRouter } from 'react-router-dom';
-import './index.css';
 
 import { FETCH_ALL_TASKS } from '../queries';
 import CreateTodo from './CreateTodo';

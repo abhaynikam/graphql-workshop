@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Mutation } from 'react-apollo';
+import { NavLink } from 'react-router-dom';
 
 import { CREATE_TASK } from '../mutations';
 import { FETCH_ALL_TASKS } from '../queries';
@@ -31,9 +32,12 @@ class CreateTodo extends Component {
           }
 
           return(
-            <div id="myDIV" className="header">
+            <div className="header">
               <form onSubmit={handleSubmit}>
-                <h2>My To Do List</h2>
+                <div className="row">
+                  <h2 className="col-sm-12 text-center">My To Do List</h2>
+                  <NavLink to='/lists' className="col-sm-12 text-center">Back to All Todo Lists</NavLink>
+                </div>
                 <input
                   value={this.state.description}
                   onChange={this.handleChange('description')}

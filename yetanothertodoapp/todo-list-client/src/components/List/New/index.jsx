@@ -1,6 +1,6 @@
 import React from 'react';
 import { Mutation } from 'react-apollo';
-import { withRouter } from 'react-router-dom';
+import { withRouter, NavLink } from 'react-router-dom';
 
 import ListForm from '../form';
 import { CREATE_NEW_LIST } from '../mutations';
@@ -15,7 +15,22 @@ const NewList = (props) => {
           });
         }
 
-        return(<ListForm handleSubmit={onSubmit} name='' />);
+        return(
+          <div className="container">
+            <div className="row ml-1 mr-1">
+              <div className="col-sm-12">
+                <h2>Add New Todo List</h2>
+              </div>
+
+              <div className="col-sm-12">
+                <NavLink to='/lists'>Back to All Todo Lists</NavLink>
+              </div>
+
+            </div>
+            <ListForm handleSubmit={onSubmit} name='' />
+
+          </div>
+        );
       }}
     </Mutation>
   );

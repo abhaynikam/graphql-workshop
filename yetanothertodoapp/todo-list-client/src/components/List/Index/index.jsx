@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import { Query } from 'react-apollo';
-
 import { NavLink } from 'react-router-dom';
-
-import './index.css';
 
 import { FETCH_ALL_LIST_ITEMS } from '../queries';
 
@@ -29,7 +26,7 @@ class ListIndex extends Component {
                 <h2>All Lists</h2>
                 <NavLink to='/lists/new'>Add New List</NavLink>
               </div>
-              <ul >
+              <ul>
                 {this.renderListItems(data.allTodoListItems)}
               </ul>
             </div>

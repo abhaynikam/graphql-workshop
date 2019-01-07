@@ -16,27 +16,24 @@ class ListForm extends Component {
 
   render() {
     return(
-      <div className="container">
-        <h2>Add New Todo List</h2>
-        <form className="form-horizontal" onSubmit={this.handleFormSubmit}>
-          <div className="form-group clearfix">
-            <label className="control-label col-sm-2">Todo List Name:</label>
-            <div className="col-sm-10">
-              <input name="name"
-                placeholder="Todo List Name"
-                onChange={this.handleChange}
-                className="form-control"
-              />
-            </div>
+      <form className="form-horizontal jumbotron" onSubmit={this.handleFormSubmit}>
+        <div className="form-group clearfix">
+          <label className="control-label col-sm-2">Todo List Name:</label>
+          <div className="col-sm-10">
+            <input name="name"
+              placeholder="Todo List Name"
+              onChange={this.handleChange}
+              className="form-control"
+            />
           </div>
+        </div>
 
-          <div className="form-group clearfix">
-            <div className="col-sm-offset-2 col-sm-10">
-              <button type="submit" className="btn btn-primary">Create New Todo List</button>
-            </div>
+        <div className="form-group clearfix">
+          <div className="col-sm-offset-2 col-sm-10">
+            <button type="submit" className="btn btn-primary">Create New Todo List</button>
           </div>
-        </form>
-      </div>
+        </div>
+      </form>
     )
   }
 }
