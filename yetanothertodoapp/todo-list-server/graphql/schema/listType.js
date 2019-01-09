@@ -4,8 +4,13 @@ export default `
     name: String!
   }
 
+  type PaginatedAllListResponse {
+    totalRecords: Int!,
+    allTodoLists: [List!]!
+  }
+
   type Query {
-    getAllTodoLists: [List]
+    getAllTodoLists(limit: Int, offset: Int): PaginatedAllListResponse
     getTodoList(id: ID!): List!
   }
 

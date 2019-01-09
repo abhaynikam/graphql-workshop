@@ -1,6 +1,13 @@
 module.exports = (sequelize, DataTypes) => {
   const Task = sequelize.define('Task', {
-    description: DataTypes.STRING,
+    description: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          msg: 'Task description is required.',
+        },
+      },
+    },
     complete: {
       type: DataTypes.BOOLEAN,
       allowNull: false,

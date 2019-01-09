@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import { Query } from 'react-apollo';
 import { NavLink } from 'react-router-dom';
+import ReactPaginate from 'react-paginate';
 
 import DeleteTodoList from '../Delete';
 import { FETCH_ALL_LIST_ITEMS } from '../queries';
 
 class ListIndex extends Component {
+  state = { limit: 5, offset: 0, currentPage: 0 };
+
   renderListItems = (allTodoListItems) =>
     allTodoListItems.map((listItem) => {
       return(
@@ -22,10 +25,21 @@ class ListIndex extends Component {
     });
 
   render() {
+    const { limit, offset, currentPage } = this.state;
+
     return(
-      <Query query={FETCH_ALL_LIST_ITEMS}>
+      <Query query={FETCH_ALL_LIST_ITEMS} variables={{ limit, offset }}>
         {({ loading, error, data }) => {
           if(loading) return <p>Loading...</p>
+
+          const handlePageClick = (data) => {
+            const currentPage = data.selected,
+              offset = Math.ceil(currentPage * this.state.limit);
+
+            this.setState({ offset, currentPage });
+          }
+
+          const pageCount = Math.ceil(data.paginatedTodoListResponse.totalRecords / limit);
 
           return(
             <div>
@@ -34,8 +48,20 @@ class ListIndex extends Component {
                 <NavLink to='/lists/new'>Add New List</NavLink>
               </div>
               <ul>
-                {this.renderListItems(data.allTodoListItems)}
+                {this.renderListItems(data.paginatedTodoListResponse.allTodoLists)}
               </ul>
+
+              <ReactPaginate
+                previousLabel="prev"
+                nextLabel="next"
+                forcePage={currentPage}
+                pageCount={pageCount}
+                pageRangeDisplayed={5}
+                containerClassName="pagination"
+                activeClassName="active"
+                onPageChange={handlePageClick}
+                disableInitialCallback={true}
+              />
             </div>
           );
         }}

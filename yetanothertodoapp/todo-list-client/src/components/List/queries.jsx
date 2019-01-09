@@ -1,10 +1,13 @@
 import gql from 'graphql-tag';
 
 const FETCH_ALL_LIST_ITEMS = gql`
-  query FetchAllListItems {
-    allTodoListItems: getAllTodoLists {
-      id
-      name
+  query FetchAllListItems($limit: Int, $offset: Int) {
+    paginatedTodoListResponse: getAllTodoLists(limit: $limit, offset: $offset) {
+      totalRecords
+      allTodoLists {
+        id
+        name
+      }
     }
   }
 `;

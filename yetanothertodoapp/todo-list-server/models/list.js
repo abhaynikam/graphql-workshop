@@ -3,6 +3,11 @@ module.exports = (sequelize, DataTypes) => {
     name: {
       type: DataTypes.STRING,
       uniq: true,
+      validate: {
+        notEmpty: {
+          msg: 'List name is required.',
+        },
+      },
     },
   }, {});
 

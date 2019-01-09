@@ -2,7 +2,14 @@ import models from '../../models';
 
 export default {
   Query: {
-    getAllTodoLists: () => models.List.all(),
+    getAllTodoLists: (_, { limit, offset }, _ctx) => {
+      const allTodoLists = models.List.findAll({ offset, limit });
+
+      return {
+        totalRecords: models.List.all().then(result => result.length),
+        allTodoLists,
+      };
+    },
     getTodoList: (_, { id }, _ctx) => models.List.findByPk(id),
   },
   Mutation: {

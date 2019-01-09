@@ -144,3 +144,11 @@ input {
 .addBtn:hover {
   background-color: #bbb;
 }
+
+.pagination .active {
+  background-color: #f44336 !important;
+}
+
+.pagination a {
+  color: black !important;
+}
