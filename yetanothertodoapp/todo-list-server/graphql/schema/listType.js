@@ -10,7 +10,7 @@ export default `
   }
 
   type Query {
-    getAllTodoLists(limit: Int, offset: Int): PaginatedAllListResponse
+    getAllTodoLists(limit: Int, offset: Int, query: String): PaginatedAllListResponse
     getTodoList(id: ID!): List!
   }
 

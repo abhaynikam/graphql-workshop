@@ -2,11 +2,11 @@ import models from '../../models';
 
 export default {
   Query: {
-    getAllTodoLists: (_, { limit, offset }, _ctx) => {
-      const allTodoLists = models.List.findAll({ offset, limit });
+    getAllTodoLists: (_, { limit, offset, query }, _ctx) => {
+      const allTodoLists = models.List.findAll({ where: { name: { $like: `%${query}%` } }, offset, limit });
 
       return {
-        totalRecords: models.List.all().then(result => result.length),
+        totalRecords: models.List.findAll({ where: { name: { $like: `%${query}%` } } }).then(result => result.length),
         allTodoLists,
       };
     },

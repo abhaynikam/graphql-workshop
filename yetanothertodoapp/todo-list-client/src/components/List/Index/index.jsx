@@ -7,7 +7,17 @@ import DeleteTodoList from '../Delete';
 import { FETCH_ALL_LIST_ITEMS } from '../queries';
 
 class ListIndex extends Component {
-  state = { limit: 5, offset: 0, currentPage: 0 };
+  state = {
+    limit: 5,
+    offset: 0,
+    currentPage: 0,
+    query: ""
+  };
+
+  handleChange = event => {
+    event.preventDefault();
+    this.setState({ query: event.target.value });
+  }
 
   renderListItems = (allTodoListItems) =>
     allTodoListItems.map((listItem) => {
@@ -25,10 +35,10 @@ class ListIndex extends Component {
     });
 
   render() {
-    const { limit, offset, currentPage } = this.state;
+    const { limit, offset, currentPage, query } = this.state;
 
     return(
-      <Query query={FETCH_ALL_LIST_ITEMS} variables={{ limit, offset }}>
+      <Query query={FETCH_ALL_LIST_ITEMS} variables={{ limit, offset, query }}>
         {({ loading, error, data }) => {
           if(loading) return <p>Loading...</p>
 
@@ -46,6 +56,16 @@ class ListIndex extends Component {
               <div className="header">
                 <h2>All Lists</h2>
                 <NavLink to='/lists/new'>Add New List</NavLink>
+              </div>
+              <div className="jumbotron">
+                <input
+                  name="query"
+                  onChange={this.handleChange}
+                  type="text"
+                  value={query}
+                  className="col-sm-12"
+                  placeholder="Enter Search String"
+                />
               </div>
               <ul>
                 {this.renderListItems(data.paginatedTodoListResponse.allTodoLists)}
