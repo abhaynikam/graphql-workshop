@@ -12,5 +12,6 @@ export default `
   type Mutation {
     createNewTodoList(name: String!): List!
     updateTodoList(id: ID!, name: String!): List!
+    deleteTodoList(id: ID!): Boolean
   }
 `;

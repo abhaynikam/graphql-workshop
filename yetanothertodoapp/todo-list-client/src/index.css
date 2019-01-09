@@ -91,7 +91,7 @@ ul li.checked::before {
 
 .edit {
   position: absolute;
-  right: 32px;
+  right: 46px;
   top: 0;
   padding: 12px 16px 12px 16px;
 }

@@ -4,13 +4,17 @@ import { withRouter, NavLink } from 'react-router-dom';
 
 import ListForm from '../form';
 import { CREATE_NEW_TODO_LIST } from '../mutations';
+import { FETCH_ALL_LIST_ITEMS } from '../queries';
 
 const NewList = (props) => {
   return(
     <Mutation mutation={CREATE_NEW_TODO_LIST}>
       {(createNewList) => {
         const onSubmit = values => {
-          createNewList({ variables: values }).then(() => {
+          createNewList({
+            variables: values,
+            refetchQueries: [{ query: FETCH_ALL_LIST_ITEMS }]
+          }).then(() => {
             props.history.push('/lists');
           });
         }

@@ -18,6 +18,7 @@ module.exports = {
       },
       ListId: {
         type: Sequelize.INTEGER,
+        onDelete: 'CASCADE',
         references: {
           model: 'Lists',
           key: 'id',

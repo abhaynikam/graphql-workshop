@@ -2,19 +2,20 @@ import React, { Component } from 'react';
 import { Query } from 'react-apollo';
 import { NavLink } from 'react-router-dom';
 
+import DeleteTodoList from '../Delete';
 import { FETCH_ALL_LIST_ITEMS } from '../queries';
 
 class ListIndex extends Component {
   renderListItems = (allTodoListItems) =>
     allTodoListItems.map((listItem) => {
       return(
-        <NavLink to={`/lists/${listItem.id}/tasks`}>
-          <li key={listItem.id}>
+        <NavLink to={`/lists/${listItem.id}/tasks`} key={listItem.id}>
+          <li>
             {listItem.name}
             <NavLink to={`/lists/${listItem.id}/edit`}>
               <span className='edit'>Edit</span>
-              </NavLink>
-            <span className='close'>x</span>
+            </NavLink>
+            <DeleteTodoList id={listItem.id} />
           </li>
         </NavLink>
       );

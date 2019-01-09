@@ -18,5 +18,11 @@ const UPDATE_TODO_LIST = gql`
   }
 `;
 
+const DELETE_TODO_LIST = gql`
+  mutation DeleteTodoList($id: ID!) {
+    success: deleteTodoList(id: $id)
+  }
+`;
 
-export { CREATE_NEW_TODO_LIST, UPDATE_TODO_LIST };
+
+export { CREATE_NEW_TODO_LIST, UPDATE_TODO_LIST, DELETE_TODO_LIST };
