@@ -2,8 +2,8 @@ import models from '../../models';
 
 export default {
   Mutation: {
-    createOrder: (_, args, _ctx) => models.Order.create(args, {
+    createOrder: (_, { orderInput }, _ctx) => models.Order.create(orderInput, {
       include: [{ model: models.LineItem, as: 'lineItems' }],
-    }),
+    }).then(() => true),
   },
 };

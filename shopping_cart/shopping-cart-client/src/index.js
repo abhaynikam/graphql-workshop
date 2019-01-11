@@ -4,6 +4,8 @@ import Routes from './routes';
 import * as serviceWorker from './serviceWorker';
 import ApolloClient from 'apollo-boost';
 import 'bootstrap/dist/css/bootstrap.css';
+import './index.css';
+
 
 const client = new ApolloClient({ uri: "http://localhost:8080/graphql" });
 

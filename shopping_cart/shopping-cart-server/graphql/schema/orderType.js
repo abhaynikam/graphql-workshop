@@ -6,13 +6,19 @@ export default `
     getProducts: [Product]
   }
 
-  input LineItem {
-    product_id: ID
+  input LineItemInput {
+    product_id: ID!
     order_id: ID
     quantity: Int!
   }
 
+  input OrderInput {
+    total: Float!
+    user_id: ID!
+    lineItems: [LineItemInput]
+  }
+
   type Mutation {
-    createOrder(total: Float!, user_id: ID!, lineItems: [LineItem]): Order
+    createOrder(orderInput: OrderInput): Boolean
   }
 `;
