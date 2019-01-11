@@ -1,0 +1,4 @@
+##### Start presentation
+```
+npm start
+```
