@@ -1,0 +1,29 @@
+{
+  "development": {
+    "username": "postgres",
+    "password": "postgres",
+    "database": "shopping_cart_development",
+    "dialect": "postgres",
+    "define": {
+      "underscored": true
+    }
+  },
+  "test": {
+    "username": "postgres",
+    "password": "postgres",
+    "database": "shopping_cart_test",
+    "dialect": "postgres",
+    "define": {
+      "underscored": true
+    }
+  },
+  "production": {
+    "username": "postgres",
+    "password": "postgres",
+    "database": "shopping_cart_production",
+    "dialect": "postgres",
+    "define": {
+      "underscored": true
+    }
+  }
+}
