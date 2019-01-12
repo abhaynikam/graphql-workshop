@@ -3,6 +3,7 @@ import models from '../../models';
 export default {
   Query: {
     getAllTodoList: () => models.List.findAll(),
+    getTodoList: (_, { id }, _ctx) => models.List.findByPk(id),
   },
   Mutation: {
     // args = { name: "something" }
@@ -15,5 +16,6 @@ export default {
         }
       });
     },
+    updateTodoList: (_, { id, name }, _ctx) => models.List.findByPk(id).then(list => list.update({ name })),
   }
 };

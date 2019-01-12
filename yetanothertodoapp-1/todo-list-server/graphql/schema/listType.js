@@ -6,6 +6,7 @@ export default `
 
   type Query {
     getAllTodoList: [List]
+    getTodoList(id: ID): List
   }
 
   type ListResponse {
@@ -15,5 +16,6 @@ export default `
 
   type Mutation {
     createTodoList(name: String!): ListResponse
+    updateTodoList(id: ID, name: String!): List
   }
 `;

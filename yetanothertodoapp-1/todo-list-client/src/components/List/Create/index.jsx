@@ -1,8 +1,10 @@
-import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import React from 'react';
 import { Mutation } from 'react-apollo';
 
 import gql from 'graphql-tag';
+import Form from '../form';
+import { withRouter } from 'react-router-dom';
+
 
 const CREATE_TODO_LIST = gql`
   mutation CreateTodoList($name: String!) {
@@ -12,53 +14,34 @@ const CREATE_TODO_LIST = gql`
   }
 `;
 
-class CreateTodoList extends Component {
-  state = {
-    todoListName: ''
-  };
+const CreateTodoList = (props) => {
+  return(
+    <Mutation mutation={CREATE_TODO_LIST}>
+      {
+        (createTodoList) => {
 
+          const handleSubmit = (formValues) => {
+            createTodoList({ variables: { name: formValues.todoListName } }).then((response) => {
+              if(response.data.createTodoList.success) {
 
-  handleChange = (event) => {
-    // name = event.target.name  => todoListName
-    const { name, value } = event.target;
-    // { todoListName:  "asdasdas" }
-    this.setState({ [name]: value });
-  }
-
-
-  render() {
-    return(
-      <Mutation mutation={CREATE_TODO_LIST}>
-        {
-          (createTodoList) => {
-
-            const handleSubmit = (event) => {
-              event.preventDefault();
-              console.log(this.state);
-
-              createTodoList({ variables: { name: this.state.todoListName } }).then((response) => {
-                if(response.data.createTodoList.success) {
-
-                  this.props.history.push('/');
-                }
-              })
-            }
-
-            return(
-              <form onSubmit={handleSubmit} >
-                <h1>Create Todo List Form</h1>
-
-                <input name="todoListName" onChange={this.handleChange} value={this.state.name} />
-
-                <button type="submit">Create Todo List</button>
-              </form>
-            )
+                props.history.push('/');
+              }
+            })
           }
+
+          return(
+            <div>
+              <h1>Create Todo Form</h1>
+
+              <Form name="" onSubmit={handleSubmit} />
+            </div>
+          )
         }
-      </Mutation>
-    )
-  }
+      }
+    </Mutation>
+  )
 }
+
 
 export default withRouter(CreateTodoList);
 
